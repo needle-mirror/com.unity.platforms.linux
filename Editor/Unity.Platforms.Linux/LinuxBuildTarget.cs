@@ -6,10 +6,8 @@ namespace Unity.Platforms.Linux
 {
     public abstract class LinuxBuildTarget : BuildTarget
     {
-        public override string GetUnityPlatformName()
-        {
-            return nameof(UnityEditor.BuildTarget.StandaloneLinux64);
-        }
+        public override bool CanBuild => UnityEngine.Application.platform == UnityEngine.RuntimePlatform.LinuxEditor;
+        public override string UnityPlatformName => nameof(UnityEditor.BuildTarget.StandaloneLinux64);
     }
 
     class DotNetLinuxBuildTarget : LinuxBuildTarget
@@ -18,19 +16,9 @@ namespace Unity.Platforms.Linux
         protected override bool IsDefaultBuildTarget => true;
 #endif
 
-        public override string GetDisplayName()
-        {
-            return "Linux .NET";
-        }
-
-        public override string GetBeeTargetName()
-        {
-            return "linux-dotnet";
-        }
-        public override string GetExecutableExtension()
-        {
-            return ".exe";
-        }
+        public override string DisplayName => "Linux .NET";
+        public override string BeeTargetName => "linux-dotnet";
+        public override string ExecutableExtension => ".exe";
 
         public override bool Run(FileInfo buildTarget)
         {
@@ -65,7 +53,7 @@ namespace Unity.Platforms.Linux
             var shellArgs = new ShellProcessArgs
             {
                 Executable = Path.GetFullPath(Path.Combine(UnityEditor.EditorApplication.applicationContentsPath, "MonoBleedingEdge", "bin", "mono")),
-                Arguments = new [] { $"\"{workingDirPath}/{exeName}{GetExecutableExtension()}\"" },
+                Arguments = new [] { $"\"{workingDirPath}/{exeName}{ExecutableExtension}\"" },
                 WorkingDirectory = new DirectoryInfo(workingDirPath),
                 ThrowOnError = false
             };
@@ -83,19 +71,9 @@ namespace Unity.Platforms.Linux
 
     class IL2CPPLinuxBuildTarget : LinuxBuildTarget
     {
-        public override string GetDisplayName()
-        {
-            return "Linux IL2CPP";
-        }
-
-        public override string GetBeeTargetName()
-        {
-            return "linux-il2cpp";
-        }
-        public override string GetExecutableExtension()
-        {
-            return string.Empty;
-        }
+        public override string DisplayName => "Linux IL2CPP";
+        public override string BeeTargetName => "linux-il2cpp";
+        public override string ExecutableExtension => string.Empty;
 
         public override bool Run(FileInfo buildTarget)
         {
@@ -128,7 +106,7 @@ namespace Unity.Platforms.Linux
         {
             var shellArgs = new ShellProcessArgs
             {
-                Executable = $"{workingDirPath}/{exeName}{GetExecutableExtension()}",
+                Executable = $"{workingDirPath}/{exeName}{ExecutableExtension}",
                 Arguments = new string [] {},
                 WorkingDirectory = new DirectoryInfo(workingDirPath),
                 ThrowOnError = false

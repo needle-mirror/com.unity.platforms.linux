@@ -4,18 +4,18 @@ using Unity.BuildSystem.NativeProgramSupport;
 
 abstract class DotsLinuxTarget : DotsBuildSystemTarget
 {
-    protected override ToolChain ToolChain => new LinuxGccToolchain(LinuxGccSdk.Locatorx64.UserDefaultOrDummy);
+    public override ToolChain ToolChain => new LinuxGccToolchain(LinuxGccSdk.Locatorx64.UserDefaultOrDummy);
 }
 
 class DotsLinuxDotNetTarget : DotsLinuxTarget
 {
-    protected override string Identifier => "linux-dotnet";
+    public override string Identifier => "linux-dotnet";
 
-    protected override ScriptingBackend ScriptingBackend => ScriptingBackend.Dotnet;
-    protected override bool CanUseBurst => false;
+    public override ScriptingBackend ScriptingBackend => ScriptingBackend.Dotnet;
+    public override bool CanUseBurst => false;
 }
 
 class DotsLinuxIL2CPPTarget : DotsLinuxTarget
 {
-    protected override string Identifier => "linux-il2cpp";
+    public override string Identifier => "linux-il2cpp";
 }

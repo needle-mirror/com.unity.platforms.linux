@@ -30,19 +30,17 @@ namespace Unity.Platforms.Linux
                 startInfo.EnvironmentVariables.Add("LD_LIBRARY_PATH",".");
             startInfo.CreateNoWindow = true;
             startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardOutput = false;
             startInfo.RedirectStandardError = true;
 
             var process = new Process();
             process.StartInfo = startInfo;
-            process.OutputDataReceived += (_, args) => Debug.Log(args.Data);
             process.ErrorDataReceived += (_, args) => Debug.LogError(args.Data);
             
             var success = process.Start();
             if (!success)
                 return false;
 
-            process.BeginOutputReadLine();
             process.BeginErrorReadLine();
 
             return true;
@@ -84,19 +82,17 @@ namespace Unity.Platforms.Linux
                 startInfo.EnvironmentVariables.Add("LD_LIBRARY_PATH",".");
             startInfo.CreateNoWindow = true;
             startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardOutput = false;
             startInfo.RedirectStandardError = true;
 
             var process = new Process();
             process.StartInfo = startInfo;
-            process.OutputDataReceived += (_, args) => Debug.Log(args.Data);
             process.ErrorDataReceived += (_, args) => Debug.LogError(args.Data);
             
             var success = process.Start();
             if (!success)
                 return false;
 
-            process.BeginOutputReadLine();
             process.BeginErrorReadLine();
 
             return true;

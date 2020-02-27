@@ -1,7 +1,7 @@
 {
   "name": "com.unity.platforms.linux",
   "displayName": "Platforms Linux",
-  "version": "0.2.1-preview.4",
+  "version": "0.2.1-preview.5",
   "unity": "2019.3",
   "unityRelease": "0f1",
   "description": "Provides platform and build specific features for the Linux platform.",
@@ -11,13 +11,13 @@
     "linux"
   ],
   "dependencies": {
-    "com.unity.platforms": "0.2.1-preview.4",
-    "com.unity.platforms.desktop": "0.2.1-preview.4"
+    "com.unity.platforms": "0.2.1-preview.5",
+    "com.unity.platforms.desktop": "0.2.1-preview.5"
   },
   "repository": {
-    "footprint": "6a0e1ce76c3faa65a7b0019cb67f725f859ee9ea",
+    "footprint": "8fa9ee59b40df5c9a8cd63d8af86623a39a24b17",
     "type": "git",
     "url": "https://github.com/Unity-Technologies/dots-platforms.git",
-    "revision": "aba8d8cd06464764016312d646e3b9d1d255c90d"
+    "revision": "a6ccd6b67b1cb56e2832fbcba636623b09ba2cd6"
   }
 }

@@ -19,6 +19,7 @@ namespace Unity.Platforms.Linux
         public override string DisplayName => "Linux .NET";
         public override string BeeTargetName => "linux-dotnet";
         public override string ExecutableExtension => ".exe";
+        public override bool UsesIL2CPP => false;
 
         public override bool Run(FileInfo buildTarget)
         {
@@ -72,6 +73,7 @@ namespace Unity.Platforms.Linux
         public override string DisplayName => "Linux IL2CPP";
         public override string BeeTargetName => "linux-il2cpp";
         public override string ExecutableExtension => string.Empty;
+        public override bool UsesIL2CPP => true;
 
         public override bool Run(FileInfo buildTarget)
         {

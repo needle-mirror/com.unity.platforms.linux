@@ -7,18 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.2] - 2020-03-14
 
 ### Changed
-- Updated `com.unity.platforms` package version to `0.2.2-preview.1`.
-- Updated `com.unity.platforms.desktop` package version to `0.2.2-preview.1`.
+- Updated `com.unity.platforms` package version to `0.2.2-preview.2`.
+- Updated `com.unity.platforms.desktop` package version to `0.2.2-preview.2`.
+- Renamed 'Linux .NET' build target to 'Linux .NET - Tiny'.
+- Renamed 'Linux IL2CPP' build target to 'Linux IL2CPP - Tiny'.
+
+### Added
+- Added 'Linux .NET - .NET Standard 2.0' build target.
 
 ## [0.2.1] - 2020-02-25
 
 ### Changed
 - Updated `com.unity.platforms` package version to `0.2.1-preview.7`.
 - Updated `com.unity.platforms.desktop` package version to `0.2.1-preview.7`.
-- Removed stdout redirect to Unity Console
+- Removed stdout redirect to Unity Console.
 
 ### Added
-- Add a UsesIL2CPP property to BuildTarget
+- Add a UsesIL2CPP property to BuildTarget.
 
 ## [0.2.1-preview] - 2020-01-24
 

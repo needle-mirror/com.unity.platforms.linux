@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.1] - 2020-02-25
 
 ### Changed
-- Updated `com.unity.platforms` package version to `0.2.1-preview.7`.
-- Updated `com.unity.platforms.desktop` package version to `0.2.1-preview.7`.
+- Updated `com.unity.platforms` package version to `0.2.1-preview.8`.
+- Updated `com.unity.platforms.desktop` package version to `0.2.1-preview.8`.
 - Removed stdout redirect to Unity Console
 
 ### Added

@@ -10,9 +10,14 @@ namespace Unity.Platforms.Linux
         public override string UnityPlatformName => nameof(UnityEditor.BuildTarget.StandaloneLinux64);
     }
 
-    abstract class DotNetLinuxBuildTargetBase : LinuxBuildTarget
+    class DotNetLinuxBuildTarget : LinuxBuildTarget
     {
+#if UNITY_EDITOR_LINUX
+        protected override bool IsDefaultBuildTarget => true;
+#endif
 
+        public override string DisplayName => "Linux .NET";
+        public override string BeeTargetName => "linux-dotnet";
         public override string ExecutableExtension => ".exe";
         public override bool UsesIL2CPP => false;
 
@@ -63,25 +68,9 @@ namespace Unity.Platforms.Linux
         }
     }
 
-    class DotNetTinyLinuxBuildTarget : DotNetLinuxBuildTargetBase
-    {
-#if UNITY_EDITOR_LINUX
-        protected override bool IsDefaultBuildTarget => true;
-#endif
-
-        public override string DisplayName => "Linux .NET - Tiny";
-        public override string BeeTargetName => "linux-dotnet";
-    }
-
-    class DotNetStandard20LinuxBuildTarget : DotNetLinuxBuildTargetBase
-    {
-        public override string DisplayName => "Linux .NET - .NET Standard 2.0";
-        public override string BeeTargetName => "linux-dotnet-ns20";
-    }
-
     class IL2CPPLinuxBuildTarget : LinuxBuildTarget
     {
-        public override string DisplayName => "Linux IL2CPP - Tiny";
+        public override string DisplayName => "Linux IL2CPP";
         public override string BeeTargetName => "linux-il2cpp";
         public override string ExecutableExtension => string.Empty;
         public override bool UsesIL2CPP => true;

@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.2] - 2020-03-14
 
 ### Changed
-- Updated `com.unity.platforms` package version to `0.2.2-preview.4`.
-- Updated `com.unity.platforms.desktop` package version to `0.2.2-preview.4`.
+- Updated `com.unity.platforms` package dependency.
+- Updated `com.unity.platforms.desktop` package dependency.
 - Renamed 'Linux .NET' build target to 'Linux .NET - Tiny'.
 - Renamed 'Linux IL2CPP' build target to 'Linux IL2CPP - Tiny'.
 

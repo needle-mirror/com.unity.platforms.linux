@@ -1,6 +1,8 @@
 {
     "name": "Unity.Build.Linux.DotsRuntime",
     "references": [
+        "Unity.Build",
+        "Unity.Build.Internals",
         "Unity.Build.DotsRuntime"
     ],
     "includePlatforms": [

@@ -3,6 +3,7 @@ using System.IO;
 using Unity.Build;
 using Unity.Build.Internals;
 using Unity.Build.DotsRuntime;
+using Unity.Build.Desktop.DotsRuntime;
 using Debug = UnityEngine.Debug;
 
 namespace Unity.Build.Linux.DotsRuntime
@@ -15,7 +16,6 @@ namespace Unity.Build.Linux.DotsRuntime
 
     abstract class DotNetLinuxBuildTargetBase : LinuxBuildTarget
     {
-
         public override string ExecutableExtension => ".exe";
         public override bool UsesIL2CPP => false;
 
@@ -27,22 +27,8 @@ namespace Unity.Build.Linux.DotsRuntime
             startInfo.WorkingDirectory = buildTarget.Directory.FullName;
             if (!startInfo.EnvironmentVariables.ContainsKey("LD_LIBRARY_PATH"))
                 startInfo.EnvironmentVariables.Add("LD_LIBRARY_PATH", ".");
-            startInfo.CreateNoWindow = true;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = false;
-            startInfo.RedirectStandardError = true;
 
-            var process = new Process();
-            process.StartInfo = startInfo;
-            process.ErrorDataReceived += (_, args) => Debug.LogError(args.Data);
-
-            var success = process.Start();
-            if (!success)
-                return false;
-
-            process.BeginErrorReadLine();
-
-            return true;
+            return new DesktopRun().RunOnThread(startInfo);
         }
 
         internal override ShellProcessOutput RunTestMode(string exeName, string workingDirPath, int timeout)
@@ -51,18 +37,9 @@ namespace Unity.Build.Linux.DotsRuntime
             {
                 Executable = Path.GetFullPath(Path.Combine(UnityEditor.EditorApplication.applicationContentsPath, "MonoBleedingEdge", "bin", "mono")),
                 Arguments = new[] { $"\"{workingDirPath}/{exeName}{ExecutableExtension}\"" },
-                WorkingDirectory = new DirectoryInfo(workingDirPath),
-                ThrowOnError = false
             };
 
-            // samples should be killed on timeout
-            if (timeout > 0)
-            {
-                shellArgs.MaxIdleTimeInMilliseconds = timeout;
-                shellArgs.MaxIdleKillIsAnError = false;
-            }
-
-            return ShellProcess.Run(shellArgs);
+            return DesktopRun.RunTestMode(shellArgs, workingDirPath, timeout);
         }
     }
 
@@ -96,22 +73,8 @@ namespace Unity.Build.Linux.DotsRuntime
             startInfo.WorkingDirectory = buildTarget.Directory.FullName;
             if (!startInfo.EnvironmentVariables.ContainsKey("LD_LIBRARY_PATH"))
                 startInfo.EnvironmentVariables.Add("LD_LIBRARY_PATH", ".");
-            startInfo.CreateNoWindow = true;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = false;
-            startInfo.RedirectStandardError = true;
 
-            var process = new Process();
-            process.StartInfo = startInfo;
-            process.ErrorDataReceived += (_, args) => Debug.LogError(args.Data);
-
-            var success = process.Start();
-            if (!success)
-                return false;
-
-            process.BeginErrorReadLine();
-
-            return true;
+            return new DesktopRun().RunOnThread(startInfo);
         }
 
         internal override ShellProcessOutput RunTestMode(string exeName, string workingDirPath, int timeout)
@@ -120,18 +83,9 @@ namespace Unity.Build.Linux.DotsRuntime
             {
                 Executable = $"{workingDirPath}/{exeName}{ExecutableExtension}",
                 Arguments = new string[] { },
-                WorkingDirectory = new DirectoryInfo(workingDirPath),
-                ThrowOnError = false
             };
 
-            // samples should be killed on timeout
-            if (timeout > 0)
-            {
-                shellArgs.MaxIdleTimeInMilliseconds = timeout;
-                shellArgs.MaxIdleKillIsAnError = false;
-            }
-
-            return ShellProcess.Run(shellArgs);
+            return DesktopRun.RunTestMode(shellArgs, workingDirPath, timeout);
         }
     }
 }

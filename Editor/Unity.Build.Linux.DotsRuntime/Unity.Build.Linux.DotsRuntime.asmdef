@@ -3,7 +3,8 @@
     "references": [
         "Unity.Build",
         "Unity.Build.Internals",
-        "Unity.Build.DotsRuntime"
+        "Unity.Build.DotsRuntime",
+        "Unity.Build.Desktop.DotsRuntime"
     ],
     "includePlatforms": [
         "Editor"

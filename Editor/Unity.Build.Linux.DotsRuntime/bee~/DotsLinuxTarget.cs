@@ -1,6 +1,6 @@
 using Bee.Toolchain.Linux;
 using DotsBuildTargets;
-using Unity.BuildSystem.NativeProgramSupport;
+using Bee.NativeProgramSupport;
 
 abstract class DotsLinuxTarget : DotsBuildSystemTarget
 {

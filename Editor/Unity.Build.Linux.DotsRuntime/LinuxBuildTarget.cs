@@ -1,17 +1,19 @@
 using System.Diagnostics;
 using System.IO;
-using Unity.Build;
-using Unity.Build.Internals;
-using Unity.Build.DotsRuntime;
 using Unity.Build.Desktop.DotsRuntime;
-using Debug = UnityEngine.Debug;
+using Unity.Build.DotsRuntime;
+using Unity.Build.Internals;
+using UnityEngine;
 
 namespace Unity.Build.Linux.DotsRuntime
 {
     public abstract class LinuxBuildTarget : BuildTarget
     {
+        protected static Texture2D s_Icon = LoadIcon("Icons", "BuildSettings.Standalone");
+
         public override bool CanBuild => UnityEngine.Application.platform == UnityEngine.RuntimePlatform.LinuxEditor;
         public override string UnityPlatformName => nameof(UnityEditor.BuildTarget.StandaloneLinux64);
+        public override Texture2D Icon => s_Icon;
     }
 
     abstract class DotNetLinuxBuildTargetBase : LinuxBuildTarget

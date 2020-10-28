@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.IO;
 using Unity.Build.Desktop.DotsRuntime;
@@ -53,6 +54,9 @@ namespace Unity.Build.Linux.DotsRuntime
 
         public override string DisplayName => "Linux .NET - Tiny";
         public override string BeeTargetName => "linux-dotnet";
+        public override Type[] DefaultComponents { get; }
+        public override string DefaultAssetFileName => "Linux-DotNet";
+        public override bool ShouldCreateBuildTargetByDefault => true;
     }
 
     class DotNetStandard20LinuxBuildTarget : DotNetLinuxBuildTargetBase
